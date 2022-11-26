@@ -1,14 +1,12 @@
 export default function getRefs() {
   return {
-    searchForm: document.querySelector('#search-form'),
-    gallery: document.querySelector('.gallery'),
-    buttonLoadMore: document.querySelector('.load-more'),
-    photoСard: document.querySelector('.photo-card'),
-    searchBtn: document.querySelector('.search_btn'),
-    loader: document.querySelector('.js-loader'),
-    paginationContainer: document.querySelector('#tui-pagination-container'),
-    target: document.querySelector("footer"),
-    scrollToTopBtn: document.querySelector(".scrollToTopBtn"),
-    rootElement: document.documentElement,
-  }
+    formInput: document.querySelector('.form__input'),
+    pairsList: document.querySelector('.pairs__list'),
+    pairsListItem: document.querySelector('.pairs__list_item'),
+    formButton: document.querySelector('.form__button'),
+    form: document.querySelector('.form'),
+    btnSortByName: document.querySelector('.button__sort_name'),
+    btnSortByValue: document.querySelector('.button__sort_value'),
+    btnDelete: document.querySelector('.button__sort_delete'),
+  };
 }

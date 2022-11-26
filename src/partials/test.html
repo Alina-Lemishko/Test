@@ -3,48 +3,37 @@
   <form class="form">
     <label class="form__label"
       >Name/Value pairs
-      <input class="form__input" type="text" />
+      <input class="form__input" type="text" name="inputQuery" />
     </label>
-    <button class="form__button" type="submit">Add</button>
+    <button class="form__button" type="submit" disabled>Add</button>
   </form>
   <div class="section__wrap">
     <div class="section__list_wrap">
       <p class="section__pretitle">Name/Value pairs list</p>
       <div class="pairs__list_wrap">
-        <ul class="pairs__list">
-          <li class="pairs__list_item">Name=Value</li>
-          <li class="pairs__list_item">Name=Value</li>
-          <li class="pairs__list_item">Name=Value</li>
-          <li class="pairs__list_item">Name=Value</li>
-          <li class="pairs__list_item">Name=Value</li>
-          <li class="pairs__list_item">Name=Value</li>
-          <li class="pairs__list_item">Name=Value</li>
-          <li class="pairs__list_item">Name=Value</li>
-          <li class="pairs__list_item">Name=Value</li>
-          <li class="pairs__list_item">Name=Value</li>
-          <li class="pairs__list_item">Name=Value</li>
-          <li class="pairs__list_item">Name=Value</li>
-          <li class="pairs__list_item">Name=Value</li>
-          <li class="pairs__list_item">Name=Value</li>
-          <li class="pairs__list_item">Name=Value</li>
-          <li class="pairs__list_item">Name=Value</li>
-        </ul>
+        <ul class="pairs__list"></ul>
       </div>
     </div>
     <ul class="buttons__list">
       <li class="buttons__list_item">
-        <button class="buttons__list_button" type="button">Sort by Name</button>
+        <button class="buttons__list_button button__sort_name" type="button">
+          Sort by Name
+        </button>
       </li>
       <li class="buttons__list_item">
-        <button class="buttons__list_button" type="button">
+        <button class="buttons__list_button button__sort_value" type="button">
           Sort by Value
         </button>
       </li>
       <li class="buttons__list_item">
-        <button class="buttons__list_button" type="button">Delete</button>
+        <button class="buttons__list_button button__sort_delete" type="button">
+          Delete
+        </button>
       </li>
       <li class="buttons__list_item">
-        <button class="buttons__list_button" type="button">Show XML</button>
+        <button class="buttons__list_button button__sort_xml" type="button">
+          Show XML
+        </button>
       </li>
     </ul>
   </div>

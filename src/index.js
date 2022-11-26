@@ -1,13 +1,21 @@
 // Imports
+import {
+  onDelete,
+  onFormSubmit,
+  onInputChange,
+  onItemClick,
+  onSortByName,
+  onSortByValue,
+} from './js/add-pairs';
 import getRefs from './js/services/getRefs';
-import { renderMarkup } from './js/renderMarkup';
 
 const refs = getRefs();
-let gallery = null;
 
 // Listeners
-// refs.searchForm.addEventListener('submit', onSearch);
-// refs.searchForm.addEventListener('input', onInput);
-// refs.scrollToTopBtn.addEventListener('click', scrollToTop);
-
-// refs.searchBtn.disabled = true;
+refs.formInput.addEventListener('input', onInputChange);
+refs.form.addEventListener('submit', onFormSubmit);
+refs.btnSortByName.addEventListener('click', onSortByName);
+refs.btnSortByValue.addEventListener('click', onSortByValue);
+refs.btnDelete.addEventListener('click', onDelete);
+// refs.btnShowXML.addEventListener('click', onShowXML);
+refs.pairsList.addEventListener('click', onItemClick);
