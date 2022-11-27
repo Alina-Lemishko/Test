@@ -3,7 +3,12 @@
   <form class="form">
     <label class="form__label"
       >Name/Value pairs
-      <input class="form__input" type="text" name="inputQuery" />
+      <input
+        class="form__input"
+        type="text"
+        name="inputQuery"
+        placeholder="Name=Value"
+      />
     </label>
     <button class="form__button" type="submit" disabled>Add</button>
   </form>
@@ -36,5 +41,11 @@
         </button>
       </li>
     </ul>
+  </div>
+  <div class="section__xml visually-hidden">
+    <p class="xml__title">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</p>
+    <p class="xml__title">&lt;<span>pairs</span>&gt;</p>
+    <ul class="xml__list"></ul>
+    <p class="xml__title">&lt;<span>/pairs</span>&gt;</p>
   </div>
 </div>

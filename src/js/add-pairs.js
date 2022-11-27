@@ -1,11 +1,14 @@
 import { renderMarkup } from './template/renderMarkup';
 
 import getRefs from './services/getRefs';
+import { renderXML } from './template/renderXML';
 
 const refs = getRefs();
 
+// Main array for pairs
 let arrayOfPairs = [];
 
+// Function for availability of form button
 export function onInputChange(e) {
   if (e.target.value.trim().length >= 1) {
     refs.formButton.removeAttribute('disabled', false);
@@ -18,10 +21,11 @@ export function onInputChange(e) {
 export function onFormSubmit(e) {
   e.preventDefault();
   const inputPair = e.target.elements.inputQuery.value.trim();
-  const name = inputPair.split('=')[0].trim();
-  const value = inputPair.split('=')[1].trim();
+  const name = inputPair.split('=')[0]?.trim();
+  const value = inputPair.split('=')[1]?.trim();
   const isAlfaNumeric = validationPairs(name, value);
 
+  // Check pairs for correct format
   if (inputPair !== '' && name && value && isAlfaNumeric) {
     const pair = {
       id: Date.now(),
@@ -39,6 +43,7 @@ export function onFormSubmit(e) {
   }
 }
 
+//Function for pairs validation
 function validationPairs(name, value) {
   if (/[^a-zA-Z0-9]/.test(name) || /[^a-zA-Z0-9]/.test(value)) {
     alert('Input is not alphanumeric');
@@ -65,34 +70,51 @@ export function getFromLocalStorage() {
   }
 }
 
+// Function for sort by name
 export function onSortByName(e) {
-  arrayOfPairs = [...arrayOfPairs].sort((a, b) => a.name.localeCompare(b.name));
-  renderMarkup(arrayOfPairs);
+  const sortedArrayOfPairs = [...arrayOfPairs].sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+  renderMarkup(sortedArrayOfPairs);
 }
 
+// Function for sort by value
 export function onSortByValue(e) {
-  arrayOfPairs = [...arrayOfPairs].sort((a, b) =>
+  const sortedArrayOfPairs = [...arrayOfPairs].sort((a, b) =>
     a.value.localeCompare(b.value)
   );
-  renderMarkup(arrayOfPairs);
+  renderMarkup(sortedArrayOfPairs);
 }
 
-getFromLocalStorage();
-
+// Function for getting id from checked pair and add to localStorage
 export function onItemClick(e) {
   const checkedItem = e.target.id;
-  localStorage.setItem('idForDelete', JSON.stringify(checkedItem));
 
-  // onDelete(checkedItem);
+  localStorage.setItem('idForDelete', JSON.stringify(checkedItem));
 }
 
+// Function for deleting checked pairs and change main array with pairs
 export function onDelete(e) {
   const getPairs = localStorage.getItem('idForDelete');
   const pairs = JSON.parse(getPairs);
+  const isPairsAvailable = arrayOfPairs.find(el => el.id === Number(pairs));
+  if (!isPairsAvailable) {
+    return;
+  }
   arrayOfPairs = arrayOfPairs.filter(function (item) {
     return item.id != pairs;
   });
-  console.log(pairs);
 
   addToLocalStorage(arrayOfPairs);
 }
+
+// Function fro rendering pair in xml format
+export function onXMLShow() {
+  const getPairs = localStorage.getItem('pairs');
+  const pairs = JSON.parse(getPairs);
+  refs.sectionXML.classList.toggle('visually-hidden');
+  renderXML(pairs);
+}
+
+// Get pairs from localStorage after reloading page
+getFromLocalStorage();

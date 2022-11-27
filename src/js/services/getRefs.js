@@ -8,5 +8,8 @@ export default function getRefs() {
     btnSortByName: document.querySelector('.button__sort_name'),
     btnSortByValue: document.querySelector('.button__sort_value'),
     btnDelete: document.querySelector('.button__sort_delete'),
+    btnShowXML: document.querySelector('.button__sort_xml'),
+    sectionXML: document.querySelector('.section__xml'),
+    XMLList: document.querySelector('.xml__list'),
   };
 }
